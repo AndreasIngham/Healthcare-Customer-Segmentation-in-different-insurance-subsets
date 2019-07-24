@@ -174,6 +174,13 @@ clusterEval(data5_new_3, 0.01) #check at 1% level of significance
 ####################################################################################
 ## Now seeing the clusters characteristics
 tapply(data5_new_3$RIDAGEYR, data5_new_3$cluster, summary)
-
 boxplot(RIDAGEYR~cluster,data=data5_new_3)
-boxplot(DMDCITZN~cluster,data=data5_new_3)
+ggplot(data5_new_3, aes(x = OCD150)) + geom_histogram(aes(color = cluster), fill = "white")
+ggplot(data5_new_3, aes(x = DMDEDUC2)) + geom_histogram(aes(color = cluster), fill = "white") 
+CrossTable(data5_new_3$DMDMARTL, data5_new_3$cluster)
+CrossTable(data5_new_3$DMDCITZN, data5_new_3$cluster)
+ggplot(data5_new_3, aes(x = INDHHIN2)) + geom_histogram(aes(color = cluster), fill = "white") 
+
+#Cluster 1: Elderly (60s), working less, lower education, higher prop. of US citizens, slightly lower income
+#Cluster 2: Middle-aged (50s), working slightly
+#Cluster 3: Adults (30s), working more, higher education, lower married rate, more foreigners
